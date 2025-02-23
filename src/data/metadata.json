@@ -1,0 +1,58 @@
+{
+    "dataset_name": "machine_intelligence_dataset",
+    "version": "1.0.0",
+    "description": "Processed dataset for Machine Intelligence Node AI training.",
+    "source": "Collected from open-source datasets and preprocessed for AI training.",
+    "num_samples": 100000,
+    "num_features": 512,
+    "label_distribution": {
+        "class_0": 48000,
+        "class_1": 52000
+    },
+    "preprocessing": {
+        "normalization": "Applied Unicode normalization (NFKC)",
+        "lowercasing": true,
+        "punctuation_removal": true,
+        "stopword_removal": false,
+        "custom_token_filter": ["example_token"]
+    },
+    "augmentation": {
+        "synonym_replacement": true,
+        "random_insertion": true,
+        "random_deletion": true,
+        "character_swap": false,
+        "noise_injection": false,
+        "back_translation": {
+            "enabled": true,
+            "languages": ["fr", "de"]
+        }
+    },
+    "dataset_split": {
+        "train_ratio": 0.75,
+        "validation_ratio": 0.15,
+        "test_ratio": 0.10,
+        "stratified": true
+    },
+    "processing_logs": [
+        {
+            "timestamp": "2025-02-21T12:00:00Z",
+            "action": "Preprocessing applied",
+            "details": "Normalized text, removed punctuation, and applied token filters."
+        },
+        {
+            "timestamp": "2025-02-21T12:30:00Z",
+            "action": "Data augmentation performed",
+            "details": "Applied synonym replacement, random insertions, and back-translation."
+        },
+        {
+            "timestamp": "2025-02-21T13:00:00Z",
+            "action": "Dataset split",
+            "details": "Stratified sampling applied to ensure balanced class distribution."
+        }
+    ],
+    "hardware_info": {
+        "cpu": "Intel Xeon Platinum 8259CL",
+        "gpu": "NVIDIA A100",
+        "ram": "256GB"
+    }
+}
