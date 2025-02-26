@@ -1,0 +1,4 @@
+# Machine Intelligence Node - Training Times Benchmark
+# This file will store AI model training duration per epoch.
+# Data will be automatically generated during training.
+Epoch,Time (Seconds)
