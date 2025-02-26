@@ -1,0 +1,61 @@
+# Machine Intelligence Node - Hyperparameter Configuration
+# Defines adjustable parameters for model training and tuning.
+
+general:
+  experiment_name: "baseline_run"
+  seed: 42  # Ensures reproducibility
+  precision: "fp32"  # Options: "fp32", "fp16", "bf16"
+
+training:
+  batch_size: 32
+  epochs: 50
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adamw"  # Options: "sgd", "adam", "adamw"
+  momentum: 0.9  # Used for SGD optimizer
+  gradient_clip: 1.0  # Prevents exploding gradients
+
+scheduler:
+  enabled: true
+  type: "cosine_annealing"  # Options: "step", "cosine_annealing", "exponential"
+  step_size: 10
+  gamma: 0.9
+  min_lr: 1e-6
+
+model:
+  architecture: "transformer"
+  hidden_size: 1024
+  num_layers: 12
+  num_heads: 8
+  dropout: 0.1
+  activation: "gelu"  # Options: "relu", "gelu", "silu"
+  normalization: "layer_norm"  # Options: "batch_norm", "layer_norm"
+  weight_init: "xavier"  # Options: "xavier", "kaiming", "orthogonal"
+
+regularization:
+  dropout_rate: 0.1
+  l1_lambda: 0.0
+  l2_lambda: 0.0001
+  label_smoothing: 0.1
+
+evaluation:
+  batch_size: 16
+  metrics: ["accuracy", "f1_score", "loss"]
+  threshold: 0.5  # Used for classification tasks
+
+data:
+  augmentation:
+    enabled: true
+    techniques: ["random_crop", "horizontal_flip", "gaussian_noise"]
+  normalization:
+    mean: [0.5, 0.5, 0.5]
+    std: [0.2, 0.2, 0.2]
+  shuffle: true
+  validation_split: 0.2
+  num_workers: 4
+
+logging:
+  enabled: true
+  log_dir: "logs/hyperparam_logs/"
+  save_model: true
+  checkpoint_interval: 5
