@@ -1,0 +1,3 @@
+# Machine Intelligence Node - Inference Log
+# This file will store AI inference results, including input details, model predictions, latency, and confidence scores.
+# Logs will be dynamically generated during AI model execution.
