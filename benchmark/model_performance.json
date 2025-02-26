@@ -1,0 +1,5 @@
+{
+  "description": "Machine Intelligence Node - AI Model Performance Metrics",
+  "note": "This file will store performance benchmarks including accuracy, loss, and inference speed.",
+  "benchmarks": []
+}
