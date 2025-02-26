@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minintel-node
+  namespace: minintel
+  labels:
+    app: minintel-node
+spec:
+  replicas: 3  # Adjust for scaling
+  selector:
+    matchLabels:
+      app: minintel-node
+  template:
+    metadata:
+      labels:
+        app: minintel-node
+    spec:
+      containers:
+        - name: minintel-container
+          image: minintel-node:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          env:
+            - name: CONFIG_PATH
+              value: "/app/configs/default.yaml"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
