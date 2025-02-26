@@ -1,0 +1,3 @@
+# Machine Intelligence Node - Memory Usage Log
+# This file will track AI model memory consumption (CPU & GPU) over time.
+# Logs will be dynamically generated during model execution for optimization analysis.
