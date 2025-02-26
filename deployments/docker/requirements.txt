@@ -1,0 +1,12 @@
+# Machine Intelligence Node - Python Dependencies
+torch==2.0.1
+torchvision==0.15.2
+numpy==1.24.3
+pandas==2.0.1
+scipy==1.10.1
+requests==2.31.0
+flask==2.2.5
+websocket-client==1.5.1
+PyYAML==6.0
+pytest==7.3.1
+gunicorn==20.1.0
