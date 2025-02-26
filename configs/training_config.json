@@ -1,0 +1,68 @@
+{
+  "experiment_name": "baseline_run",
+  "seed": 42,
+  "device": "cuda",
+  "precision": "fp32",
+  "training": {
+    "batch_size": 32,
+    "epochs": 50,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "optimizer": "adamw",
+    "momentum": 0.9,
+    "gradient_clip": 1.0,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 5,
+      "monitor": "validation_loss"
+    }
+  },
+  "scheduler": {
+    "enabled": true,
+    "type": "cosine_annealing",
+    "step_size": 10,
+    "gamma": 0.9,
+    "min_lr": 1e-6
+  },
+  "model": {
+    "architecture": "transformer",
+    "hidden_size": 1024,
+    "num_layers": 12,
+    "num_heads": 8,
+    "dropout": 0.1,
+    "activation": "gelu",
+    "normalization": "layer_norm",
+    "weight_init": "xavier"
+  },
+  "regularization": {
+    "dropout_rate": 0.1,
+    "l1_lambda": 0.0,
+    "l2_lambda": 0.0001,
+    "label_smoothing": 0.1
+  },
+  "evaluation": {
+    "batch_size": 16,
+    "metrics": ["accuracy", "f1_score", "loss"],
+    "threshold": 0.5
+  },
+  "data": {
+    "dataset_path": "data/dataset.csv",
+    "validation_split": 0.2,
+    "shuffle": true,
+    "num_workers": 4,
+    "augmentation": {
+      "enabled": true,
+      "techniques": ["random_crop", "horizontal_flip", "gaussian_noise"]
+    },
+    "normalization": {
+      "mean": [0.5, 0.5, 0.5],
+      "std": [0.2, 0.2, 0.2]
+    }
+  },
+  "logging": {
+    "enabled": true,
+    "log_dir": "logs/training_logs/",
+    "save_model": true,
+    "checkpoint_interval": 5
+  }
+}
